@@ -66,41 +66,6 @@ class Mult(Formula):
     def __repr__(self):
         return "Mult(%s, %s)" % (self.left, self.right)
 
-def parse(formula_string):
-
-        formula_list = formula_string.split(" ")
-        if len(formula_list) == 0:
-            print "ERROR: formula is empty."
-            return None
-        return foo(formula_list)
-
-
-def foo(formula_list):
-    #STEP 1: Check if Variable and if last element? if yes return Var
-    if variable_check(formula_list[0]) == True:
-        if len(formula_list) == 1:
-            return Var(formula_list.pop(0)) #Last element of list
-        else:
-            #STEP 2: Check if next is + and that list isn't empty after +
-            curVar = formula_list.pop(0)
-            if formula_list[0] == "+":
-                    formula_list.pop(0) #pop the +
-                    if len(formula_list) == 0: #Check that formula doesnt end with +
-                        print "ERROR Incorrect Formula"
-                        return None
-                    #STEP 3: Recursive call Add(Var...)
-                    return Add(Var(curVar), foo(formula_list))
-
-    #if it is not a Variable
-    print "ERROR Incorrect Formula"
-    return None
-
-def variable_check(string):
-        if string == "": return False
-        if string[0] == "$":
-            return True # not a variable
-        return False
-
 def parser(tokens):
     #while token not empty do
     #put variable on variable_stack and other on operation_stack
