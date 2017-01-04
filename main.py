@@ -77,9 +77,6 @@ def parserop(tokens):
     op_stack = []
 
     #if the op1 < op2 compute op2 (if no op in front put on stack)
-    #Example: (A + B) * C
-    op  (   ) *
-    var   A+B   C
     #while tokens not empty
         #if op1 < op2 put on stack
         #else compute
